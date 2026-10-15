@@ -7,7 +7,7 @@
   <link rel="icon" href="data:," />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Danniel Hu — Mechanical & Biomedical Engineer</title>
   <style>
     :root{
@@ -27,13 +27,14 @@
       --line-dark:#2B2B28;
       --nav-h:64px;
       --max:1180px;
+      --display:"Inter Tight",Inter,-apple-system,"Helvetica Neue",sans-serif;
       --texture:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='160' viewBox='0 0 190 160'%3E%3Cg fill='none' stroke='%23F5F5F0' stroke-width='1' opacity='.07'%3E%3Ccircle cx='18' cy='27' r='4'/%3E%3Crect x='91' y='22' width='7' height='7'/%3E%3Cpath d='M150 22l5 9h-10z'/%3E%3Ccircle cx='64' cy='106' r='3'/%3E%3Crect x='161' y='127' width='9' height='9'/%3E%3Cpath d='M108 121l6 10h-12z'/%3E%3C/g%3E%3C/svg%3E");
     }
     @media(prefers-color-scheme:dark){
       :root{--paper:#EFEDE6;--off-white:#F3F1E9;--ink:#0D0D0B}
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+    html{scroll-behavior:auto;scroll-padding-top:var(--nav-h)}
     body{margin:0;background:var(--ink);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;line-height:1.68;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     button{font:inherit}
@@ -368,7 +369,7 @@
     .stat .stat-ghost{position:absolute;z-index:0;right:-9px;top:50%;transform:translateY(-50%);font-size:clamp(132px,12vw,180px);font-weight:700;line-height:.8;letter-spacing:-.11em;color:transparent;-webkit-text-stroke:1.5px rgba(13,13,11,.12);opacity:1;pointer-events:none;user-select:none}
     .stat:not(:first-child)::before{content:"";position:absolute;z-index:3;left:-5px;top:28px;bottom:28px;width:10px;border-top:1px solid rgba(13,13,11,.45);border-bottom:1px solid rgba(13,13,11,.45);background:linear-gradient(to right,transparent 4px,rgba(13,13,11,.45) 4px,rgba(13,13,11,.45) 5px,transparent 5px);pointer-events:none}
 
-    #profile .kicker::after{content:"▲"}#stack .kicker::after{content:"●"}#work .kicker::after{content:"■"}#process .kicker::after{content:"◆"}#contact .kicker::after{content:"+"}
+    #profile .kicker::after{content:"▲"}#stack .kicker::after{content:"●"}#work .kicker::after{content:"■"}#process .kicker::after{content:"◆"}#notes .kicker::after{content:"+"}#contact .kicker::after{content:"✕"}
     .kicker::after{display:inline-grid;place-items:center;width:12px;height:12px;color:var(--lime);font-size:10px;line-height:1;letter-spacing:0;order:-1}
     #profile .kicker::after{color:var(--lime)}
 
@@ -508,18 +509,135 @@
       .contact:before,.contact:after{display:none}
       .footer .wrap,.case-footer .wrap{align-items:flex-start;flex-wrap:wrap}
     }
+
+
+    /* Notes + CV: editorial engineering-paper views */
+    .nav-links{gap:20px}
+    .profile-cv-link{display:inline-flex;align-items:center;min-height:44px;margin-top:24px;border-bottom:1px solid var(--ink);font-size:11px;font-weight:700;letter-spacing:.12em}
+    .profile-cv-link:hover,.profile-cv-link:focus-visible{color:var(--olive);border-color:var(--olive)}
+    .notes-section{background-color:var(--paper);background-image:var(--dot-dark-strong-bg);background-size:var(--dot-size) var(--dot-size)}
+    .notes-list{border-top:1px solid var(--line-light)}
+    .note-row{display:grid;grid-template-columns:74px 170px minmax(0,1fr) 28px;column-gap:28px;align-items:start;width:100%;margin:0;padding:30px 0;border-bottom:1px solid var(--line-light);color:var(--ink);background-image:none;text-transform:none}
+    .note-row:hover,.note-row:focus-visible{color:var(--ink);background-image:linear-gradient(rgba(166,196,23,.14),rgba(166,196,23,.14));background-size:100% 100%}
+    .note-index{grid-column:1;grid-row:1/3;color:var(--olive);font-size:11px;font-weight:700;letter-spacing:.12em}
+    .note-meta{grid-column:2;grid-row:1/3;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+    .note-row strong{grid-column:3;font-size:clamp(17px,2vw,24px);line-height:1.35;letter-spacing:-.02em}
+    .note-excerpt{grid-column:3;color:var(--muted);font-size:12px;line-height:1.75;margin-top:10px}
+    .note-arrow{grid-column:4;grid-row:1/3;align-self:center;color:var(--olive);font-size:22px}
+
+    .note-page{background-color:var(--paper);background-image:var(--dot-dark-strong-bg);background-size:var(--dot-size) var(--dot-size)}
+    .note-page .case-hero{background-color:var(--paper);background-image:var(--dot-dark-strong-bg);background-size:var(--dot-size) var(--dot-size);color:var(--ink);padding:82px 0 42px;border-color:var(--line-light)}
+    .note-page .case-hero::before{display:none}
+    .reading-wrap{width:min(calc(100% - 56px),68ch);margin-inline:auto;position:relative;z-index:1}
+    .note-page .case-hero .reading-wrap{border-bottom:1px solid var(--ink);padding-bottom:40px}
+    .note-page .case-eyebrow{color:var(--olive);margin-bottom:28px}
+    .note-page .case-hero h1{max-width:none;margin:0;font-size:clamp(36px,5vw,64px);line-height:1.08}
+    .note-body{padding:56px 0 90px}
+    .note-body p{font-size:15px;line-height:1.85;margin:0 0 27px}
+    .note-divider{display:flex;align-items:center;gap:14px;margin:38px 0;color:var(--olive);font-size:14px;font-weight:700}
+    .note-divider::before,.note-divider::after{content:"";height:1px;flex:1;background:var(--line-light)}
+    .note-hashtags{color:var(--olive);font-size:12px!important;line-height:2!important;overflow-wrap:anywhere}
+    .note-source{border-top:1px solid var(--line-light);padding-top:22px;color:var(--muted);font-size:10px!important;line-height:1.7!important}
+    .note-back{display:inline-flex;align-items:center;min-height:44px;margin-top:18px}
+
+    .cv-page{background-color:var(--paper);background-image:var(--dot-dark-strong-bg);background-size:var(--dot-size) var(--dot-size)}
+    .cv-document{width:min(calc(100% - 56px),980px);margin-inline:auto;padding:74px 0 96px}
+    .cv-back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:42px}
+    .cv-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;border-top:9px solid var(--ink);border-bottom:1px solid var(--ink);padding:34px 0 30px}
+    .cv-header h1{font-size:clamp(56px,8vw,108px);line-height:.88;letter-spacing:-.07em;margin:0}
+    .cv-subtitle{font-size:13px;font-weight:700;text-transform:uppercase;margin:16px 0 0}
+    .cv-links{display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+    .cv-links a{border-bottom:1px solid var(--ink)}
+    .cv-section{display:grid;grid-template-columns:180px minmax(0,1fr);gap:44px;padding:32px 0;border-bottom:1px solid var(--line-light)}
+    .cv-section h2{font-size:12px;line-height:1.4;letter-spacing:.12em;margin:0}
+    .cv-content h3{font-size:14px;line-height:1.5;margin:0 0 14px;text-transform:uppercase}
+    .cv-content ul{margin:0;padding:0 0 0 18px}
+    .cv-content li,.cv-content p{font-size:12px;line-height:1.75;margin:0}
+    .cv-projects{display:grid}
+    .cv-project{display:grid;grid-template-columns:minmax(220px,1.4fr) minmax(180px,1fr);gap:22px;padding:14px 0;border-bottom:1px solid var(--line-light);font-size:11px;line-height:1.65}
+    .cv-project:first-child{padding-top:0}.cv-project:last-child{padding-bottom:0;border-bottom:0}
+    .cv-project strong{text-transform:uppercase}.cv-project span{color:var(--muted)}
+    .cv-education{display:grid;gap:12px}.cv-skills{font-size:12px;line-height:2}
+
+    @media(max-width:900px){
+      .nav-links{gap:13px;font-size:10px}
+      .note-row{grid-template-columns:64px 140px minmax(0,1fr) 24px;column-gap:20px}
+    }
+    @media(max-width:600px){
+      .notes-section,.note-page,.note-page .case-hero,.cv-page{background-image:var(--dot-dark-strong-bg);background-size:var(--dot-size) var(--dot-size)}
+      .note-row{grid-template-columns:58px minmax(0,1fr) 24px;column-gap:12px;padding:25px 0}
+      .note-index{grid-column:1;grid-row:1}.note-meta{grid-column:2;grid-row:1;margin-bottom:10px}.note-row strong{grid-column:1/4;grid-row:2;font-size:17px}.note-excerpt{grid-column:1/4;grid-row:3}.note-arrow{grid-column:3;grid-row:1;align-self:start}
+      .reading-wrap{width:calc(100% - 32px)}
+      .note-page .case-hero{padding:48px 0 32px}.note-page .case-hero .reading-wrap{padding-bottom:30px}.note-page .case-hero h1{font-size:clamp(34px,9.6vw,44px);overflow-wrap:break-word}.note-body{padding:42px 0 66px}.note-body p{font-size:14px;line-height:1.8}
+      .cv-document{width:calc(100% - 32px);padding:40px 0 70px}.cv-back{margin-bottom:24px}.cv-header{grid-template-columns:1fr;padding:28px 0 24px}.cv-header h1{font-size:clamp(52px,16vw,72px)}.cv-links{align-items:flex-start}.cv-section{grid-template-columns:1fr;gap:18px;padding:26px 0}.cv-project{grid-template-columns:1fr;gap:4px}.cv-project span{overflow-wrap:anywhere}
+    }
+    @media print{
+      @page{margin:16mm}
+      html,body{background:#fff!important;color:#000!important}
+      .nav,.mobile-menu,#top,.case-page:not(#cv){display:none!important}
+      #cv{display:block!important;opacity:1!important;transform:none!important;min-height:0;padding:0;background:#fff!important;color:#000!important}
+      .cv-document{width:100%;max-width:none;padding:0}
+      .cv-back{display:none!important}
+      .cv-header{border-color:#000;padding-top:20px}.cv-header h1{font-size:62pt}
+      .cv-section{break-inside:avoid;border-color:#bbb;padding:18px 0}
+      .cv-links a{color:#000;border-color:#000}
+    }
+
+    /* Display headlines: restrained neo-grotesque against the mono logbook system. */
+    .hero h1{
+      font-family:var(--display);
+      font-size:clamp(52px,7.5vw,104px);
+      font-weight:600;
+      line-height:1.02;
+      letter-spacing:-.035em;
+      text-transform:none;
+    }
+    .hero-line{white-space:nowrap}
+    .contact h2{
+      font-family:var(--display);
+      font-size:clamp(40px,5.5vw,72px);
+      font-weight:600;
+      line-height:1.02;
+      letter-spacing:-.035em;
+      text-transform:none;
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:clamp(40px,11vw,58px)}
+      .hero-line{white-space:normal}
+      .contact h2{font-size:clamp(36px,10vw,52px)}
+    }
+
+    /* Real project photography is reserved for the case-study visual records. */
+    .case-figure figcaption{
+      padding:9px 11px;
+      border-top:1px solid var(--line-light);
+      color:var(--ink);
+      background:var(--paper);
+      font-size:9px;
+      line-height:1.45;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .visual-record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;min-width:0}
+    .case-figure{display:flex;flex-direction:column;min-width:0;margin:0;border:1px solid var(--line-light);background:#E7E4DB;overflow:hidden}
+    .case-figure img{display:block;width:100%;height:auto;min-width:0;object-fit:contain;background:#fff}
+    .case-figure-wide{grid-column:1/-1}
+    @media(max-width:600px){
+      .visual-record-grid{grid-template-columns:1fr;gap:14px}
+      .case-figure-wide{grid-column:auto}
+    }
   </style>
 </head>
 <body>
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-inner">
       <a class="brand" href="#top" aria-label="Danniel Hu, back to top"><span class="brand-mark">DH</span><span>DANNIEL HU</span></a>
-      <div class="nav-links"><a href="#work">WORK</a><a href="#stack">STACK</a><a href="#profile">PROFILE</a><a href="#contact">CONTACT</a></div>
+      <div class="nav-links"><a href="#work">WORK</a><a href="#stack">STACK</a><a href="#profile">PROFILE</a><a href="#notes">NOTES</a><a href="#cv">CV</a><a href="#contact">CONTACT</a></div>
       <div class="nav-actions"><div class="availability"><span class="status-dot"></span>OPEN TO WORK</div><a class="btn btn-dark" href="#contact">GET IN TOUCH</a><button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu"><span></span></button></div>
     </div>
   </nav>
   <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-links"><a href="#work">WORK</a><a href="#stack">STACK</a><a href="#profile">PROFILE</a><a href="#contact">CONTACT</a></div>
+    <div class="mobile-links"><a href="#work">WORK</a><a href="#stack">STACK</a><a href="#profile">PROFILE</a><a href="#notes">NOTES</a><a href="#cv">CV</a><a href="#contact">CONTACT</a></div>
     <div class="mobile-status"><span class="status-dot"></span>OPEN TO WORK</div>
   </div>
 
@@ -539,7 +657,7 @@
           </g>
         </svg>
         <div class="stamp" aria-hidden="true"><span>DH · TORONTO · EST. 2019</span></div>
-        <h1 class="reveal">I BUILD MEDICAL DEVICES<br><span class="hero-lime">YOU CAN HOLD.</span></h1>
+        <h1 class="reveal"><span class="hero-line">I build medical devices</span><br><span class="hero-lime">you can hold.</span></h1>
         <div class="hero-copy reveal">
           <p>Danniel Hu — Mechanical &amp; Biomedical Engineer doing R&amp;D on medical-device internals, from microfluidics to electromechanical systems. My rule: prototype it, test it, break it, make it better.</p>
           <div class="hero-buttons"><a class="btn btn-lime" href="#work">VIEW WORK</a><a class="btn btn-ghost" href="https://ptolemydl.blog" target="_blank" rel="noopener noreferrer">READ THE BLOG ↗</a></div>
@@ -566,11 +684,12 @@
         <div class="kicker"><span class="num">01</span><span>/ PROFILE</span></div>
         <div class="section-head reveal"><h2>ENGINEER FIRST.<br>EVERYTHING ELSE FOLLOWS.</h2><p class="section-intro">Eight years in Canada: a five-year Mechanical Engineering BASc at Waterloo, then a two-year Biomedical Engineering MEng at U of T — now building medical hardware in Toronto.</p></div>
         <div class="profile-list reveal">
-          <article class="profile-row"><div class="row-date">2025 — NOW</div><h3>R&amp;D — Medical device internals</h3><p>Internal structures and mechanisms of medical devices, including microfluidics applications. ISO 13485-aligned design control, rapid prototyping, verification testing.</p><span class="tag">TORONTO</span></article>
+          <article class="profile-row"><div class="row-date">2025 — NOW</div><h3>MECHANICAL SYSTEMS ENGINEER — WIREFRAME</h3><p>Mechanical design, rapid prototyping, and electromechanical integration at <a href="https://wireframe.is/">Wireframe</a>, a Toronto product design studio. Supplier outreach, technical documentation, microfluidics, and daily SLA/FDM 3D printing.</p><span class="tag">TORONTO</span></article>
           <article class="profile-row"><div class="row-date">CO-OP PROJECT</div><h3>Handheld sEMG physiotherapy device</h3><p>Full-stack device build: enclosure design, electronics, sEMG signal processing, Arduino-based control, Nextion display UI, SD-card data logging.</p><span class="tag">SHIPPED</span></article>
           <article class="profile-row"><div class="row-date">MEng</div><h3>Biomedical Engineering — University of Toronto</h3><p>Graduate work at the intersection of biomechanics, rehabilitation technology and device design.</p><span class="tag">U OF T</span></article>
           <article class="profile-row"><div class="row-date">BASc</div><h3>Mechanical Engineering — University of Waterloo</h3><p>Five years of co-op-driven engineering: design, analysis, manufacturing, and learning to ship.</p><span class="tag">WATERLOO</span></article>
         </div>
+        <a class="profile-cv-link" href="#cv">VIEW FULL CV →</a>
       </div>
     </section>
 
@@ -597,76 +716,75 @@
         <div class="work-grid reveal">
           <article class="project-card">
             <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 400 200" role="img" aria-label="Thin-line handheld sEMG device with electrode contacts, display, and signal trace">
+              <svg viewBox="0 0 400 200">
                 <g class="motif-base">
-                  <path d="M92 42h109q17 0 17 17v65q0 12-11 16l-17 6-8 12h-68l-8-12-5-2q-9-4-9-15V59q0-17 17-17Z"/>
-                  <rect x="124" y="61" width="63" height="35" rx="3"/>
-                  <path d="M132 79h8l4-7 6 16 7-20 6 11h16"/>
-                  <circle class="motif-dot" cx="128" cy="119" r="2.6"/><circle class="motif-dot" cx="144" cy="119" r="2.6"/><circle class="motif-dot" cx="160" cy="119" r="2.6"/>
-                  <path d="M92 174h126M92 168v12M218 168v12M98 171l-6 3 6 3M212 171l6 3-6 3"/>
+                  <path d="M58 63h58l13 16v74l-13 15H58l-13-15V79z"/>
+                  <path d="M45 91h84M62 63V48h50v15M69 48v-9h36v9M62 168v-15h50v15"/>
+                  <circle cx="76" cy="108" r="7"/><circle cx="99" cy="108" r="7"/><circle cx="87.5" cy="132" r="5"/>
+                  <path d="M129 116c20 0 24-11 41-11h15M185 105h11l3-2 3 3 4-2 3 2 5-1 4 1"/>
                 </g>
-                <path class="motif-accent" d="M220 92L223 92.5 225.5 91.4 228.5 92.3 231.2 91.7 233.8 92.2 235.5 90.8 236.7 94.7 238.3 87.8 239.4 97.2 241.2 84.1 242.5 101.4 244.1 79.3 245.2 106.2 246.7 72.5 248 116.8 249.7 64.3 250.8 123.5 252.4 56 253.6 129 255.2 62.7 256.4 119.5 258 70.8 259.1 111.7 260.8 77.2 262 106.4 263.5 82.1 264.8 101.9 266.5 75.8 267.6 109.6 269.2 67.3 270.5 120.2 272.1 59.1 273.2 127.5 274.8 57 276.1 125 277.7 65.2 278.8 116 280.5 72.5 281.7 109.7 283.3 78.6 284.4 104.3 286.1 82.2 287.3 101 288.9 85.4 290 98.2 291.7 87.9 293 96.5 294.5 89.3 295.8 94.8 297.4 90.5 298.7 93.7 300.4 91.2 302 92.7 304 91.5 306 92.4 308.5 91.3 311 92.6 314 91.7 317 92.3 320 91.5 323 92.4 326 91.8 329 92.3 332.5 91.7 336 92.2 339 92"/>
+                <path class="motif-accent" d="M185 105h9l3-1 3 2 4-3 4 4 5-5 4 6 5-8 4 11 5-14 4 19 5-25 4 31 5-36 4 44 5-49 4 56 5-61 4 66 5-68 4 64 5-58 4 51 5-43 4 35 5-28 4 21 5-15 4 11 5-8 4 6 5-5 4 4 5-3 4 2 5-1h12"/>
+                <path class="motif-base" d="M357 105h14"/>
               </svg>
             </div><div class="project-meta"><span class="project-index">01</span><span class="project-year">2024</span></div><h3>Handheld sEMG device</h3><p class="role">EMBEDDED LEAD · 2024</p><p>Handheld surface-EMG device for physiotherapy: 1 kHz sampling, real-time filtering, touchscreen UI.</p><div class="pills"><span class="pill">ARDUINO</span><span class="pill">DSP</span><span class="pill">NEXTION</span></div><a class="case-link" href="#project-semg">VIEW CASE →</a>
           </article>
           <article class="project-card">
             <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 400 200" role="img" aria-label="Kinematic finger and parallel exoskeleton linkage with flexion arrow">
+              <svg viewBox="0 0 400 200">
                 <g class="motif-base">
-                  <path d="M76 135 151 123M164 119l61-27M238 86l58-33"/>
-                  <circle cx="68" cy="136" r="8"/><circle cx="158" cy="121" r="8"/><circle cx="232" cy="89" r="8"/><circle cx="303" cy="49" r="8"/>
-                  <path d="M75 102 151 89 222 59 288 25M93 132 86 100M158 113l-7-24M232 81l-10-22M298 42l-10-17"/>
-                  <circle cx="75" cy="102" r="5"/><circle cx="151" cy="89" r="5"/><circle cx="222" cy="59" r="5"/><circle cx="288" cy="25" r="5"/>
-                  <path d="M170 118a22 22 0 0 0-10-18M169 111l5-2M163 103l3-4"/>
+                  <path d="M54 144l46-21 53-30 48-31 49-14 44 7 34 24"/>
+                  <path d="M100 123l13 19M153 93l13 20M201 62l10 22M250 48l4 23M294 55l-5 22"/>
+                  <path d="M62 158l51-16 53-29 45-29 43-13 35 6 29 20"/>
+                  <path d="M113 142l53-29M166 113l45-29M211 84l43-13M254 71l35 6"/>
+                  <circle cx="113" cy="142" r="5"/><circle cx="166" cy="113" r="5"/><circle cx="211" cy="84" r="5"/><circle cx="254" cy="71" r="5"/><circle cx="289" cy="77" r="5"/>
+                  <path d="M54 144v14h8M328 79l10 11-10 7"/>
                 </g>
-                <path class="motif-accent" d="M309 48c35 18 37 62 6 88M315 136l3-11M315 136l11-2"/>
+                <path class="motif-accent" d="M108 53c55-28 133-22 184 14M292 67l-15-2M292 67l-5-14"/>
               </svg>
             </div><div class="project-meta"><span class="project-index">02</span><span class="project-year">2021–2023</span></div><h3>PHANES</h3><p class="role">R&amp;D LEAD · 2021–2023</p><p>Passive exoskeleton for spinal-cord-injury mobility: sit-to-stand plus elliptical training, no motors.</p><div class="pills"><span class="pill">EXOSKELETON</span><span class="pill">FEA</span><span class="pill">MATLAB</span></div><a class="case-link" href="#project-phanes">VIEW CASE →</a>
           </article>
           <article class="project-card">
             <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 400 200" role="img" aria-label="EEG head profile with scalp electrodes, amplifier, brainwave, and feeding spoon">
+              <svg viewBox="0 0 400 200">
                 <g class="motif-base">
-                  <path d="M151 160c-18-16-28-41-26-68 3-38 29-63 65-63 31 0 52 17 57 46l14 17-12 8v14q0 18-20 18h-10l-4 28"/>
-                  <rect x="76" y="96" width="34" height="44" rx="3"/>
-                  <path d="M110 105 150 62M110 114 176 48M110 123 205 52M110 132 228 71"/>
-                  <path d="M131 84l7 6M272 108q31-7 51 10M323 118q12-7 20 1t-6 14q-11 3-14-15Z"/>
-                  <circle class="motif-dot" cx="150" cy="62" r="3"/><circle class="motif-dot" cx="176" cy="48" r="3"/><circle class="motif-dot" cx="205" cy="52" r="3"/><circle class="motif-dot" cx="228" cy="71" r="3"/>
-                  <circle class="motif-dot" cx="93" cy="108" r="2"/><circle class="motif-dot" cx="93" cy="118" r="2"/><circle class="motif-dot" cx="93" cy="128" r="2"/>
+                  <path d="M99 153c-22-15-31-42-25-67 7-28 29-47 56-50 26-3 49 10 61 31 9 16 9 35 2 50-5 11-1 18 11 20l-5 19h-37v16h-43v-20"/>
+                  <path d="M132 37c-3 14-2 28 4 42M114 40c-2 14 1 29 8 42M150 40c-4 14-3 28 2 40" stroke-dasharray="2 6"/>
+                  <circle cx="112" cy="48" r="4" class="motif-dot"/><circle cx="132" cy="42" r="4" class="motif-dot"/><circle cx="151" cy="48" r="4" class="motif-dot"/>
+                  <path d="M116 48c34 1 71 17 122 46M136 42c31 8 63 23 102 52M155 48c25 10 49 25 83 46" stroke-dasharray="3 6"/>
+                  <rect x="238" y="72" width="58" height="45"/><path d="M248 84h38M248 94h22M248 105h28"/>
                 </g>
-                <path class="motif-accent" d="M125 19h12c5 0 5-10 10-10s5 20 10 20 5-12 10-12 5 7 10 7 5-17 10-17 5 25 10 25 5-13 10-13 5 5 10 5h28"/>
+                <path class="motif-accent" d="M296 95h12l4-5 6 10 7-18 7 27 7-14 6 6 5-6 6 1h15"/>
               </svg>
             </div><div class="project-meta"><span class="project-index">03</span><span class="project-year">PERSONAL</span></div><h3>En-take</h3><p class="role">LEAD DESIGNER · PERSONAL PROJECT</p><p>Smart pillbox for medication adherence, co-designed with a UI/UX designer: 7+ day capacity, elderly-friendly touch UI.</p><div class="pills"><span class="pill">ESP32-S3</span><span class="pill">SOLIDWORKS</span><span class="pill">3D PRINTING</span></div><a class="case-link" href="#project-entake">VIEW CASE →</a>
           </article>
           <article class="project-card">
             <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 400 200" role="img" aria-label="Side-view knee range-of-motion linkage with goniometer arc">
+              <svg viewBox="0 0 400 200" role="img" aria-label="Knee range-of-motion linkage with goniometer arc">
                 <g class="motif-base">
-                  <path d="M78 42 190 101M208 109l91 49M299 158h32"/>
-                  <path d="M83 34 75 50M304 150l-10 17"/>
-                  <circle cx="199" cy="105" r="11"/>
-                  <circle class="motif-dot" cx="199" cy="105" r="2.5"/>
-                  <path d="M129 105h10M138 76l9 4M158 53l7 7M187 36l2 10M219 38l-3 10M247 51l-7 8"/>
-                  <path d="M265 42v13M260 46l5-4M273 45q2-4 6-2 3 3-1 6l-5 6h8M287 47q0-5 5-5t5 5v3q0 5-5 5t-5-5Zm14-5a3 3 0 1 0 .1 0"/>
-                  <path d="M278 174h62M286 174l-8 9M299 174l-8 9M312 174l-8 9M325 174l-8 9M338 174l-8 9"/>
+                  <path d="M68 55h96l41 45M205 100l92 58M55 47h116M55 63h107M218 91l89 56M211 106l88 62"/>
+                  <path d="M86 47v16M146 47v16M244 116l-10 17M270 133l-10 17"/>
+                  <circle cx="205" cy="100" r="13"/><circle cx="205" cy="100" r="4" class="motif-dot"/>
+                  <path d="M205 51v12M229 57l-6 10M249 73l-10 6M258 96h-12M253 120l-11-5M238 140l-8-9M215 149l-3-12"/>
+                  <path d="M205 46a54 54 0 0 1 10 107" stroke-dasharray="2 5"/>
                 </g>
-                <path class="motif-accent" d="M129 105a70 70 0 0 1 122-47"/>
+                <path class="motif-accent" d="M205 54a46 46 0 0 1 10 91M215 145l-5-10M215 145l10-5"/>
               </svg>
             </div><div class="project-meta"><span class="project-index">04</span><span class="project-year">48 HOURS</span></div><h3>Passive knee ROM device</h3><p class="role">CONCEPT LEAD · DESIGN CHALLENGE</p><p>Non-motorized knee rehab device from a 48-hour challenge: pneumatic cushions drive 180°→130° flexion.</p><div class="pills"><span class="pill">PNEUMATICS</span><span class="pill">BIOMECHANICS</span><span class="pill">CLASS I</span></div><a class="case-link" href="#project-knee-rom">VIEW CASE →</a>
           </article>
           <article class="project-card">
             <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 400 200" role="img" aria-label="Planetary gear cluster with robotic arm and gripper">
+              <svg viewBox="0 0 400 200">
                 <g class="motif-base">
-                  <circle cx="181" cy="116" r="70"/><circle cx="181" cy="116" r="25"/>
-                  <path d="M181 46v9M181 177v9M111 116h9M242 116h9M132 67l7 7M223 158l7 7M230 67l-7 7M139 158l-7 7"/>
-                  <path d="M181 87v7M181 138v7M152 116h7M203 116h7M160 95l6 6M196 131l6 6M202 95l-6 6M166 131l-6 6"/>
-                  <circle cx="145" cy="138" r="17"/><path d="M145 117v4M145 155v4M124 138h4M162 138h4M130 123l4 4M156 149l4 4M160 123l-4 4M134 149l-4 4"/>
-                  <circle cx="217" cy="138" r="17"/><path d="M217 117v4M217 155v4M196 138h4M234 138h4M202 123l4 4M228 149l4 4M232 123l-4 4M206 149l-4 4"/>
-                  <path d="M226 66 257 31 294 49M221 61l10 9M251 25l12 11M288 44l12 10M294 49l13 25M307 74l-10 15M307 74l16 7M297 89h26"/>
-                  <path d="M108 190h146M108 185v10M254 185v10M114 187l-6 3 6 3M248 187l6 3-6 3"/>
+                  <circle cx="106" cy="108" r="58"/><circle cx="106" cy="108" r="46"/><circle cx="106" cy="108" r="17"/>
+                  <circle cx="106" cy="74" r="12"/><circle cx="76" cy="124" r="12"/><circle cx="136" cy="124" r="12"/>
+                  <path d="M106 91V86M91 116l-5 3M121 116l5 3"/>
+                  <path d="M164 108h36l35-48 13 9-31 53 54 22-7 15-67-20-42 22"/>
+                  <circle cx="207" cy="130" r="10"/><circle cx="241" cy="64" r="10"/><circle cx="267" cy="151" r="10"/>
+                  <path d="M277 151h40M317 136v30M317 136h20M317 166h20M337 129v14M337 159v14"/>
+                  <path d="M58 178h100M70 166v12M146 166v12"/>
                 </g>
-                <path class="motif-accent" d="M181 77a17 17 0 1 0 0-34 17 17 0 1 0 0 34M181 39v4M181 77v4M160 60h4M198 60h4M166 45l4 4M192 71l4 4M196 45l-4 4M170 71l-4 4"/>
+                <circle class="motif-accent" cx="136" cy="124" r="12"/>
+                <path class="motif-accent" d="M130 124h12M136 118v12"/>
               </svg>
             </div><div class="project-meta"><span class="project-index">05</span><span class="project-year">2023</span></div><h3>Pick-and-place</h3><p class="role">MECHANICAL DESIGNER · 2023</p><p>6DOF robotic pick-and-place with a satellite gear wrist: one motor drives grip and rotation.</p><div class="pills"><span class="pill">GEAR TRAINS</span><span class="pill">SOLIDWORKS</span><span class="pill">DFM</span></div><a class="case-link" href="#project-pick-place">VIEW CASE →</a>
           </article>
@@ -688,11 +806,23 @@
       </div>
     </section>
 
+    <section class="section light notes-section" id="notes">
+      <div class="wrap">
+        <div class="kicker"><span class="num">05</span><span>/ NOTES</span></div>
+        <div class="section-head reveal"><h2>BUILD LOGS &amp;<br>TECHNICAL NOTES.</h2><p class="section-intro">Longer-form writing: build logs, design notes, and things the bench taught me.</p></div>
+        <div class="notes-list reveal">
+          <a class="note-row case-link" href="#note-test-fixture"><span class="note-index">[01]</span><span class="note-meta">2026-10-13 · ESSAY</span><strong>WHAT A TEST FIXTURE TEACHES YOU THAT A SIMULATION CANNOT</strong><span class="note-excerpt">Deliberate misuse testing, assessment triangulation, and why 'works as intended' and 'fails safely' are two different tests.</span><span class="note-arrow" aria-hidden="true">→</span></a>
+          <a class="note-row case-link" href="#note-semg-log"><span class="note-index">[02]</span><span class="note-meta">2025 · BUILD LOG</span><strong>HANDHELD SEMG BUILD LOG: FROM ENCLOSURE TO SIGNAL CHAIN</strong><span class="note-excerpt">Enclosure, electrode interface, Arduino control, and Nextion UI — how the BME 550 handheld sEMG device came together.</span><span class="note-arrow" aria-hidden="true">→</span></a>
+          <a class="note-row case-link" href="#note-phanes-log"><span class="note-index">[03]</span><span class="note-meta">2024–2025 · BUILD LOG</span><strong>PHANES DESIGN NOTES: A FINGER EXOSKELETON LINKAGE</strong><span class="note-excerpt">Kinematic sketches, linkage iterations, and prototyping notes from the BME 399 wearable hand rehabilitation exoskeleton.</span><span class="note-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <section class="contact dark" id="contact">
 
       <div class="wrap">
-        <div class="kicker"><span class="num">05</span><span>/ CONTACT</span></div>
-        <h2 class="reveal">HAVE SOMETHING THAT NEEDS <span class="contact-lime">BUILDING?</span></h2>
+        <div class="kicker"><span class="num">06</span><span>/ CONTACT</span></div>
+        <h2 class="reveal">Have something that needs <span class="contact-lime">building?</span></h2>
         <div class="location-dimension" aria-label="Toronto coordinates"><span class="dim-line" aria-hidden="true"></span><span>TORONTO — 43.65°N 79.38°W</span><span class="dim-line" aria-hidden="true"></span></div>
         <div class="contact-copy reveal"><div><p>Open to R&amp;D roles in medical devices — GTA / Canada. For everything else: the blog is where I think out loud, GitHub is where I build, LinkedIn is where I answer.</p><a class="btn btn-lime" style="margin-top:28px" href="https://www.linkedin.com/in/danniel-hu-63b52a1bb" target="_blank" rel="noopener noreferrer">GET IN TOUCH ↗</a></div><div class="contact-links"><a class="btn btn-ghost" href="https://ptolemydl.blog" target="_blank" rel="noopener noreferrer">BLOG ↗</a><a class="btn btn-ghost" href="https://github.com/PtolemyDL" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a class="btn btn-ghost" href="https://www.linkedin.com/in/danniel-hu-63b52a1bb" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></div></div>
       </div>
@@ -708,6 +838,11 @@
       <section class="case-block"><h2 class="case-label"><span>02</span>DESIGN OBJECTIVES</h2><ul class="objective-list"><li>Accurate real-time sEMG visualization in a compact handheld form.</li><li>Better signal quality via digital filtering and optimized data handling.</li><li>Hardware/firmware redesign for efficient processing and clinician-friendly operation.</li></ul></section>
       <section class="case-block"><h2 class="case-label"><span>03</span>KEY FEATURES</h2><div class="feature-groups"><div class="feature-group"><h3>Hardware integration</h3><p>Nextion 3.5&quot; touchscreen offloading graphics, stable 1 kHz sampling, redesigned enclosure with physical controls and electrode ports.</p></div><div class="feature-group"><h3>Signal processing &amp; firmware</h3><p>Digital bandpass + notch filters, real-time acquisition alongside touch UI, simple gesture logic (tap-left pause, tap-right return).</p></div><div class="feature-group"><h3>Prototyping &amp; validation</h3><p>Tested with wet and dry electrodes, with high-fidelity captures from biceps and forearm flexors.</p></div></div></section>
       <section class="case-block"><h2 class="case-label"><span>04</span>SKILLS / TOOLS</h2><div><div class="pills"><span class="pill">ARDUINO</span><span class="pill">NEXTION EDITOR</span><span class="pill">REAL-TIME DSP</span><span class="pill">FFT</span><span class="pill">SOLIDWORKS</span><span class="pill">3D PRINTING</span></div><p class="case-note"><strong>IP NOTE / </strong>Detailed firmware structure, analog front-end specs and calibration logic are withheld to protect IP and future research.</p></div></section>
+      <section class="case-block visual-record-block"><h2 class="case-label">VISUAL RECORD</h2><div class="visual-record-grid">
+        <figure class="case-figure"><img src="assets/semg-render.jpg" alt="CAD render of the handheld sEMG probe and transparent electronics enclosure"><figcaption>CAD RENDER — TRANSPARENT ENCLOSURE</figcaption></figure>
+        <figure class="case-figure"><img src="assets/semg-photo.jpg" alt="Assembled handheld sEMG prototype"><figcaption>ASSEMBLED PROTOTYPE</figcaption></figure>
+        <figure class="case-figure case-figure-wide"><img src="assets/semg-plots.jpg" alt="sEMG signal acquisition plots comparing T1 and T2 channels from Nextion and Intan systems"><figcaption>SIGNAL ACQUISITION — T1/T2 CHANNELS, NEXTION VS INTAN</figcaption></figure>
+      </div></section>
       <div class="case-actions"><a class="back-link" href="#work">← ALL WORK</a><a class="btn btn-dark" href="https://ptolemydl.blog/semg/" target="_blank" rel="noopener noreferrer">FULL WRITE-UP ON THE BLOG ↗</a></div>
     </div><footer class="case-footer"><div class="wrap"><span>© 2026 DANNIEL HU</span><span>MECHANICAL + BIOMEDICAL ENGINEER</span></div></footer>
   </main>
@@ -720,6 +855,11 @@
       <section class="case-block"><h2 class="case-label"><span>02</span>DESIGN OBJECTIVES</h2><ul class="objective-list"><li>Access to physical activity for SCI users through affordable non-powered design.</li><li>Independent sit↔stand transitions.</li><li>Modified elliptical for upper/lower-body coordination.</li><li>Accessibility, safety and manufacturability.</li></ul></section>
       <section class="case-block"><h2 class="case-label"><span>03</span>KEY FEATURES</h2><div><div class="feature-groups"><div class="feature-group"><h3>Sit-to-stand</h3><p>Hand-powered mechanism built around the user's functional upper-body strength, 5 design iterations, FEA-validated, user-centered motion analysis.</p></div><div class="feature-group"><h3>Elliptical</h3><p>Commercial trainer modified for coordinated motion, linkage geometry from MATLAB biomechanical modeling, custom push-pull test rig.</p></div><div class="feature-group"><h3>Accessibility</h3><p>Integrated transfer system, modular seat and harness.</p></div></div><div class="case-callout">$25K R&amp;D funding raised via pitch competitions · 26+ engineering drawings · fabrication with AHBM Systems &amp; EMS E3.</div></div></section>
       <section class="case-block"><h2 class="case-label"><span>04</span>SKILLS / TOOLS</h2><div><div class="pills"><span class="pill">MATLAB</span><span class="pill">SOLIDWORKS</span><span class="pill">FEA</span><span class="pill">MOTION STUDIES</span><span class="pill">DFM/DFA</span></div><p class="case-note"><strong>IP NOTE / </strong>Specific load parameters, linkage geometries and fabrication instructions are withheld to preserve future IP and commercialization potential.</p></div></section>
+      <section class="case-block visual-record-block"><h2 class="case-label">VISUAL RECORD</h2><div class="visual-record-grid">
+        <figure class="case-figure"><img src="assets/knee-photo.jpg" alt="Workshop prototype of the PHANES sit-to-stand linkage"><figcaption>WORKSHOP PROTOTYPE</figcaption></figure>
+        <figure class="case-figure"><img src="assets/knee-cad.jpg" alt="CAD iterations of the PHANES linkage"><figcaption>LINKAGE CAD ITERATIONS</figcaption></figure>
+        <figure class="case-figure case-figure-wide"><img src="assets/knee-drawings.jpg" alt="PHANES detail drawings and concept sketches"><figcaption>DETAIL DRAWINGS &amp; CONCEPT SKETCHES</figcaption></figure>
+      </div></section>
       <div class="case-actions"><a class="back-link" href="#work">← ALL WORK</a><a class="btn btn-dark" href="https://ptolemydl.blog/phanes-4/" target="_blank" rel="noopener noreferrer">FULL WRITE-UP ON THE BLOG ↗</a></div>
     </div><footer class="case-footer"><div class="wrap"><span>© 2026 DANNIEL HU</span><span>MECHANICAL + BIOMEDICAL ENGINEER</span></div></footer>
   </main>
@@ -732,6 +872,9 @@
       <section class="case-block"><h2 class="case-label"><span>02</span>DESIGN OBJECTIVES</h2><ul class="objective-list"><li>7+ days of medication in a compact quadrant-based circular layout.</li><li>Simplified touch interaction for elderly users.</li><li>Manufacturable, repairable and modularly expandable.</li></ul></section>
       <section class="case-block"><h2 class="case-label"><span>03</span>KEY FEATURES</h2><div class="feature-groups"><div class="feature-group"><h3>Form factor</h3><p>Rounded-square 110×110×35 mm, with four pill compartments around a central electronics module.</p></div><div class="feature-group"><h3>Interface</h3><p>1.28&quot; round capacitive LCD with a custom UI designed for older adults' dexterity and cognitive needs.</p></div><div class="feature-group"><h3>Hardware</h3><p>Waveshare ESP32-S3, LiPo battery and USB-C charging.</p></div><div class="feature-group"><h3>Mechanics</h3><p>Snap-fit modular SolidWorks enclosure, lid hinge, quadrant locking, 3D-printed in PLA over multiple iterations.</p></div><div class="feature-group"><h3>Firmware</h3><p>Intake progress tracking, scheduled alerts and touch navigation.</p></div></div></section>
       <section class="case-block"><h2 class="case-label"><span>04</span>SKILLS / TOOLS</h2><div><div class="pills"><span class="pill">ESP32-S3</span><span class="pill">SOLIDWORKS</span><span class="pill">3D PRINTING</span><span class="pill">EMBEDDED C</span><span class="pill">UI CO-DESIGN</span></div><p class="case-note"><strong>IP NOTE / </strong>Internal latching details, signal processing and firmware logic are withheld to preserve IP and future development.</p></div></section>
+      <section class="case-block visual-record-block"><h2 class="case-label">VISUAL RECORD</h2><div class="visual-record-grid">
+        <figure class="case-figure case-figure-wide"><img src="assets/entake-render.jpg" alt="CAD render of the En-take dispenser with companion app interface"><figcaption>DISPENSER CAD &amp; COMPANION APP UI</figcaption></figure>
+      </div></section>
       <div class="case-actions"><a class="back-link" href="#work">← ALL WORK</a><a class="btn btn-dark" href="https://ptolemydl.blog/en-take/" target="_blank" rel="noopener noreferrer">FULL WRITE-UP ON THE BLOG ↗</a></div>
     </div><footer class="case-footer"><div class="wrap"><span>© 2026 DANNIEL HU</span><span>MECHANICAL + BIOMEDICAL ENGINEER</span></div></footer>
   </main>
@@ -756,8 +899,71 @@
       <section class="case-block"><h2 class="case-label"><span>02</span>DESIGN OBJECTIVES</h2><ul class="objective-list"><li>6DOF precise pick-and-place in a defined workspace.</li><li>Gear-driven wrist + gripper via satellite configuration.</li><li>Fabrication with accessible tools (3D printing, laser cutting).</li></ul></section>
       <section class="case-block"><h2 class="case-label"><span>03</span>KEY FEATURES</h2><div><div class="feature-groups"><div class="feature-group"><h3>DOF integration</h3><p>Stacked joints + linear rails combining translation and rotation, with wrist and grip synchronized through one mechanical input.</p></div><div class="feature-group"><h3>Satellite gear system</h3><p>Compact planetary set in the gripper: one motor controls grip and rotation simultaneously, with less wiring and higher reliability.</p></div><div class="feature-group"><h3>Mechanical design</h3><p>Fully modeled and kinematically simulated in SolidWorks, with parts optimized for PLA printing and laser-cut structures.</p></div></div><div class="case-callout">Full CAD with exploded views · fabrication drawings + BOM · demo videos.</div><p class="case-note"><strong>LEARNING NOTE / </strong>Deepened my understanding of motion coupling — mechanical simplicity wins in multi-DOF systems.</p></div></section>
       <section class="case-block"><h2 class="case-label"><span>04</span>SKILLS / TOOLS</h2><div class="pills"><span class="pill">SOLIDWORKS</span><span class="pill">GEAR TRAIN DESIGN</span><span class="pill">KINEMATICS</span><span class="pill">DFM</span><span class="pill">PROTOTYPING</span></div></section>
+      <section class="case-block visual-record-block"><h2 class="case-label">VISUAL RECORD</h2><div class="visual-record-grid">
+        <figure class="case-figure case-figure-wide"><img src="assets/pickplace-render.jpg" alt="CAD render of the pick-and-place mechanism"><figcaption>MECHANISM RENDER</figcaption></figure>
+      </div></section>
       <div class="case-actions"><a class="back-link" href="#work">← ALL WORK</a><a class="btn btn-dark" href="https://ptolemydl.blog/pick-and-place/" target="_blank" rel="noopener noreferrer">FULL WRITE-UP ON THE BLOG ↗</a></div>
     </div><footer class="case-footer"><div class="wrap"><span>© 2026 DANNIEL HU</span><span>MECHANICAL + BIOMEDICAL ENGINEER</span></div></footer>
+  </main>
+
+  <main class="case-page note-page" id="note-test-fixture" data-title="What a Test Fixture Teaches You — Danniel Hu">
+    <header class="case-hero"><div class="reading-wrap"><div class="case-eyebrow"><span>2026-10-13 · ESSAY</span></div><h1>WHAT A TEST FIXTURE TEACHES YOU THAT A SIMULATION CANNOT</h1></div></header>
+    <article class="reading-wrap note-body">
+      <p>One thing my test bench keeps teaching me: the failure modes that matter most never show up in the model.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>I was thinking about this while reading a study published last week in BMC Health Services Research (Or et al., The University of Hong Kong). The researchers propose deliberately misusing smart infusion pumps during testing — feeding them out-of-range values, wrong key sequences, operations the designer never anticipated — instead of only confirming the device works when used correctly. Their reasoning is simple: in a real ward, a tired clinician makes exactly those mistakes, and a single programming error on an infusion pump can mean a tenfold overdose.</p>
+      <p>Their 'assessment triangulation' combines three things: deliberate misuse testing, expert heuristic evaluation, and simulated-use testing with actual nurses. Each catches what the others miss.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>This maps to what I've seen on the bench: a simulation validates the physics; a fixture validates the human. The most expensive lesson I keep relearning is that 'works as intended' and 'fails safely' are two entirely different tests.</p>
+      <p>Has anyone built misuse cases into their V&amp;V protocol? Curious how others formalize this.</p>
+      <p class="note-hashtags">#MedicalDevices #MedTech #BiomedicalEngineering #ProductDevelopment #HumanFactors</p>
+      <p class="note-source">Source: Or et al., BMC Health Services Research (open access, Oct 9, 2026) — deliberate misuse testing of smart infusion pumps.</p>
+      <a class="back-link note-back" href="#notes">← ALL NOTES</a>
+    </article>
+  </main>
+
+  <main class="case-page note-page" id="note-semg-log" data-title="Handheld sEMG Build Log — Danniel Hu">
+    <header class="case-hero"><div class="reading-wrap"><div class="case-eyebrow"><span>2025 · BUILD LOG</span></div><h1>HANDHELD SEMG BUILD LOG: FROM ENCLOSURE TO SIGNAL CHAIN</h1></div></header>
+    <article class="reading-wrap note-body">
+      <p>The handheld sEMG physiotherapy device was a BME 550 course project at Waterloo. Completed in 2025 and shipped, the project brought the enclosure, electronics stack, signal chain, interface, control, and logging into one device. My role was System Designer.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>The enclosure was designed in SolidWorks around the electronics stack. That work established the physical arrangement for the components while keeping the handheld device and its internal system together as one design.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>The functional system included the sEMG signal processing chain, Arduino-based control, a Nextion display UI, and SD-card data logging. These elements formed the complete course-project build, from the mechanical enclosure through signal handling and the user-facing display.</p>
+      <a class="back-link note-back" href="#notes">← ALL NOTES</a>
+    </article>
+  </main>
+
+  <main class="case-page note-page" id="note-phanes-log" data-title="PHANES Design Notes — Danniel Hu">
+    <header class="case-hero"><div class="reading-wrap"><div class="case-eyebrow"><span>2024–2025 · BUILD LOG</span></div><h1>PHANES DESIGN NOTES: A FINGER EXOSKELETON LINKAGE</h1></div></header>
+    <article class="reading-wrap note-body">
+      <p>PHANES was a BME 399 wearable hand rehabilitation exoskeleton project developed from 2024 to 2025. My role was Hardware Designer &amp; Prototyper, with the work focused on the device's mechanical linkage and its physical iterations.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>The design work centered on finger linkage kinematics and a parallel exoskeleton linkage. Kinematic sketches were used to study the relationship between the finger motion and the linkage arrangement without separating the mechanism from the wearable application.</p>
+      <div class="note-divider" aria-hidden="true">+</div>
+      <p>Prototyping iterations carried those linkage ideas into physical form. Each iteration remained focused on the same defined scope: the finger mechanism, the parallel linkage architecture, and the practical process of refining the hardware through prototypes.</p>
+      <a class="back-link note-back" href="#notes">← ALL NOTES</a>
+    </article>
+  </main>
+
+  <main class="case-page cv-page" id="cv" data-title="CV — Danniel Hu">
+    <div class="cv-document">
+      <a class="back-link cv-back" href="#top">← BACK</a>
+      <header class="cv-header">
+        <div><h1>DANNIEL HU</h1><p class="cv-subtitle">Mechanical &amp; Biomedical Engineer — Toronto, ON</p></div>
+        <div class="cv-links"><a href="https://github.com/PtolemyDL" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="http://linkedin.com/in/dannielhu" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://ptolemydl.blog" target="_blank" rel="noopener noreferrer">Blog ↗</a></div>
+      </header>
+      <section class="cv-section"><h2>EXPERIENCE</h2><div class="cv-content"><h3>Mechanical Systems Engineer — Wireframe, Toronto — 2025—NOW</h3><ul><li>Mechanical design, rapid prototyping, and electromechanical integration for multidisciplinary hardware products.</li><li>Supplier outreach and technical documentation.</li><li>Microfluidics work; daily SLA and FDM 3D printing.</li></ul></div></section>
+      <section class="cv-section"><h2>PROJECTS</h2><div class="cv-projects">
+        <div class="cv-project"><strong>Handheld sEMG Device</strong><span>System Designer — 2025 — BME 550 — shipped</span></div>
+        <div class="cv-project"><strong>PHANES</strong><span>Hardware Designer &amp; Prototyper — 2024–2025 — BME 399</span></div>
+        <div class="cv-project"><strong>En-take</strong><span>Hardware &amp; System Designer — 2024 — BME 298</span></div>
+        <div class="cv-project"><strong>Passive Knee ROM Device</strong><span>Mechanical Designer — 2023 — ME380</span></div>
+        <div class="cv-project"><strong>Pick-and-Place</strong><span>Mechanical Designer — 2023 — ME380</span></div>
+      </div></section>
+      <section class="cv-section"><h2>EDUCATION</h2><div class="cv-content cv-education"><p><strong>MEng Biomedical Engineering</strong><br>University of Toronto</p><p><strong>BASc Mechanical Engineering</strong><br>University of Waterloo</p></div></section>
+      <section class="cv-section"><h2>TECHNICAL SKILLS</h2><div class="cv-skills">SolidWorks · MATLAB/Simulink · Python · FEA · Raspberry Pi · Arduino · GitHub · Cursor · GD&amp;T · DFM/DFA · 3D Printing</div></section>
+    </div>
   </main>
 
   <script>
@@ -778,33 +984,81 @@
 
       var menuButton = document.querySelector('.menu-toggle');
       var menu = document.querySelector('.mobile-menu');
+      function closeMenu(){
+        menuButton.setAttribute('aria-expanded','false');
+        menuButton.setAttribute('aria-label','Open navigation menu');
+        menu.classList.remove('open');
+      }
       menuButton.addEventListener('click', function(){
         var open = menuButton.getAttribute('aria-expanded') !== 'true';
         menuButton.setAttribute('aria-expanded', String(open));
         menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
         menu.classList.toggle('open', open);
       });
-      menu.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', function(){ menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Open navigation menu'); menu.classList.remove('open'); }); });
 
       var landing = document.getElementById('top');
       var casePages = Array.prototype.slice.call(document.querySelectorAll('.case-page'));
       var transitionTimer = null;
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var scrollFrame = null;
+      var routeFrame = null;
+      var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      function jumpToLandingTarget(id){
-        var priorScrollBehavior = document.documentElement.style.scrollBehavior;
-        document.documentElement.style.scrollBehavior = 'auto';
-        if(id){
-          var target = document.getElementById(id);
-          if(target) target.scrollIntoView();
-        } else {
-          window.scrollTo(0,0);
+      function cancelScroll(){
+        if(scrollFrame !== null){
+          window.cancelAnimationFrame(scrollFrame);
+          scrollFrame = null;
         }
-        window.requestAnimationFrame(function(){ document.documentElement.style.scrollBehavior = priorScrollBehavior; });
+      }
+
+      function easeInOutCubic(progress){
+        return progress < .5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2,3) / 2;
+      }
+
+      function scrollPaddingTop(){
+        return parseFloat(window.getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      }
+
+      function targetScrollY(id){
+        if(!id || id === 'top') return 0;
+        var target = document.getElementById(id);
+        if(!target) return window.scrollY;
+        var rawY = target.getBoundingClientRect().top + window.scrollY - scrollPaddingTop();
+        var maxY = Math.max(0,document.documentElement.scrollHeight - window.innerHeight);
+        return Math.max(0,Math.min(rawY,maxY));
+      }
+
+      function scrollToLandingTarget(id,animate){
+        cancelScroll();
+        var destination = targetScrollY(id);
+        if(!animate || motionQuery.matches){
+          window.scrollTo(0,destination);
+          return;
+        }
+        var startY = window.scrollY;
+        var distance = destination - startY;
+        if(Math.abs(distance) < 1){
+          window.scrollTo(0,destination);
+          return;
+        }
+        var duration = window.matchMedia('(max-width: 600px)').matches ? 700 : 900;
+        var startTime = null;
+        function step(now){
+          if(startTime === null) startTime = now;
+          var progress = Math.min((now - startTime) / duration,1);
+          window.scrollTo(0,startY + distance * easeInOutCubic(progress));
+          if(progress < 1){
+            scrollFrame = window.requestAnimationFrame(step);
+          } else {
+            scrollFrame = null;
+            window.scrollTo(0,destination);
+          }
+        }
+        scrollFrame = window.requestAnimationFrame(step);
       }
 
       function showCase(activeCase){
         clearTimeout(transitionTimer);
+        cancelScroll();
         casePages.forEach(function(page){
           if(page !== activeCase){ page.classList.remove('active','visible','closing'); page.setAttribute('aria-hidden','true'); }
         });
@@ -814,27 +1068,24 @@
         activeCase.classList.add('active');
         activeCase.setAttribute('aria-hidden','false');
         document.title = activeCase.getAttribute('data-title');
-        var priorScrollBehavior = document.documentElement.style.scrollBehavior;
-        document.documentElement.style.scrollBehavior = 'auto';
-        activeCase.scrollIntoView({block:'start'});
         window.scrollTo(0,0);
         window.requestAnimationFrame(function(){
           window.requestAnimationFrame(function(){ activeCase.classList.add('visible'); });
-          document.documentElement.style.scrollBehavior = priorScrollBehavior;
         });
       }
 
-      function showLanding(id){
+      function showLanding(id,animate){
         clearTimeout(transitionTimer);
+        cancelScroll();
         var activeCase = document.querySelector('.case-page.active');
         var finish = function(){
           casePages.forEach(function(page){ page.classList.remove('active','visible','closing'); page.setAttribute('aria-hidden','true'); });
           landing.style.display = 'block';
           landing.setAttribute('aria-hidden','false');
           document.title = 'Danniel Hu — Mechanical & Biomedical Engineer';
-          jumpToLandingTarget(id);
+          window.requestAnimationFrame(function(){ scrollToLandingTarget(id,animate); });
         };
-        if(activeCase && !reduceMotion){
+        if(activeCase && !motionQuery.matches){
           activeCase.classList.add('closing');
           activeCase.classList.remove('visible');
           transitionTimer = window.setTimeout(finish,250);
@@ -843,31 +1094,50 @@
         }
       }
 
-      function route(){
-        var id = window.location.hash.slice(1);
-        var activeCase = id.indexOf('project-') === 0 ? document.getElementById(id) : null;
+      function route(animate,requestedId){
+        var id = typeof requestedId === 'string' ? requestedId : window.location.hash.slice(1);
+        var candidate = id ? document.getElementById(id) : null;
+        var activeCase = candidate && candidate.classList.contains('case-page') ? candidate : null;
         if(activeCase){ showCase(activeCase); }
-        else { showLanding(id); }
+        else { showLanding(id,animate); }
       }
-      document.querySelectorAll('.case-link').forEach(function(link){
-        link.addEventListener('click', function(event){
-          event.preventDefault();
-          history.pushState(null, '', link.getAttribute('href'));
-          route();
-        });
-      });
-      document.querySelectorAll('.back-link').forEach(function(link){
-        link.addEventListener('click', function(event){
-          event.preventDefault();
-          history.pushState(null, '', '#work');
-          route();
-        });
-      });
-      window.addEventListener('hashchange', route);
-      window.addEventListener('popstate', route);
-      route();
 
-      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      function navigateTo(href){
+        var id = href.slice(1);
+        closeMenu();
+        try {
+          history.pushState(null,'',href);
+        } catch(error) {
+          try { window.location.hash = href; } catch(hashError) {}
+        }
+        route(true,id);
+      }
+
+      document.addEventListener('click', function(event){
+        var target = event.target && event.target.nodeType === 1 ? event.target : event.target.parentElement;
+        var link = target && target.closest ? target.closest('a[href^="#"]') : null;
+        if(!link || event.defaultPrevented || (typeof event.button === 'number' && event.button !== 0) || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        var href = link.getAttribute('href');
+        if(!href || href === '#') return;
+        event.preventDefault();
+        navigateTo(href);
+      });
+
+      function scheduleHistoryRoute(){
+        if(routeFrame !== null) window.cancelAnimationFrame(routeFrame);
+        routeFrame = window.requestAnimationFrame(function(){
+          routeFrame = null;
+          closeMenu();
+          route(true);
+        });
+      }
+      window.addEventListener('hashchange',scheduleHistoryRoute);
+      window.addEventListener('popstate',scheduleHistoryRoute);
+      window.addEventListener('wheel',cancelScroll,{passive:true});
+      window.addEventListener('touchstart',cancelScroll,{passive:true});
+      route(false);
+
+      if(!motionQuery.matches){
         var observer = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('just-entered'); observer.unobserve(entry.target); } });
         },{threshold:.12,rootMargin:'0px 0px -25px'});

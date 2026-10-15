@@ -558,6 +558,17 @@
     .cv-project:first-child{padding-top:0}.cv-project:last-child{padding-bottom:0;border-bottom:0}
     .cv-project strong{text-transform:uppercase}.cv-project span{color:var(--muted)}
     .cv-education{display:grid;gap:12px}.cv-skills{font-size:12px;line-height:2}
+    .cv-summary{font-size:13px;line-height:1.82;margin:0;max-width:74ch}
+    .cv-experience-list{display:grid;gap:30px}
+    .cv-experience{padding-bottom:30px;border-bottom:1px solid var(--line-light)}
+    .cv-experience:last-child{padding-bottom:0;border-bottom:0}
+    .cv-experience h3{margin-bottom:12px}
+    .cv-experience ul{display:grid;gap:7px}
+    .cv-skill-list{display:grid;gap:8px}
+    .cv-skill-list p strong{display:inline-block;min-width:210px;text-transform:uppercase}
+    .cv-awards{display:grid;gap:10px}
+    .cv-awards p{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding-bottom:10px;border-bottom:1px solid var(--line-light)}
+    .cv-awards p:last-child{padding-bottom:0;border-bottom:0}
 
     @media(max-width:900px){
       .nav-links{gap:13px;font-size:10px}
@@ -569,7 +580,7 @@
       .note-index{grid-column:1;grid-row:1}.note-meta{grid-column:2;grid-row:1;margin-bottom:10px}.note-row strong{grid-column:1/4;grid-row:2;font-size:17px}.note-excerpt{grid-column:1/4;grid-row:3}.note-arrow{grid-column:3;grid-row:1;align-self:start}
       .reading-wrap{width:calc(100% - 32px)}
       .note-page .case-hero{padding:48px 0 32px}.note-page .case-hero .reading-wrap{padding-bottom:30px}.note-page .case-hero h1{font-size:clamp(34px,9.6vw,44px);overflow-wrap:break-word}.note-body{padding:42px 0 66px}.note-body p{font-size:14px;line-height:1.8}
-      .cv-document{width:calc(100% - 32px);padding:40px 0 70px}.cv-back{margin-bottom:24px}.cv-header{grid-template-columns:1fr;padding:28px 0 24px}.cv-header h1{font-size:clamp(52px,16vw,72px)}.cv-links{align-items:flex-start}.cv-section{grid-template-columns:1fr;gap:18px;padding:26px 0}.cv-project{grid-template-columns:1fr;gap:4px}.cv-project span{overflow-wrap:anywhere}
+      .cv-document{width:calc(100% - 32px);padding:40px 0 70px}.cv-back{margin-bottom:24px}.cv-header{grid-template-columns:1fr;padding:28px 0 24px}.cv-header h1{font-size:clamp(52px,16vw,72px)}.cv-links{align-items:flex-start}.cv-section{grid-template-columns:1fr;gap:18px;padding:26px 0}.cv-project{grid-template-columns:1fr;gap:4px}.cv-project span{overflow-wrap:anywhere}.cv-skill-list p strong{display:block;min-width:0;margin-bottom:2px}.cv-awards p{grid-template-columns:1fr;gap:2px}
     }
     @media print{
       @page{margin:16mm}
@@ -580,6 +591,8 @@
       .cv-back{display:none!important}
       .cv-header{border-color:#000;padding-top:20px}.cv-header h1{font-size:62pt}
       .cv-section{break-inside:avoid;border-color:#bbb;padding:18px 0}
+      .cv-section.cv-experience-section{break-inside:auto}
+      .cv-experience{break-inside:avoid}
       .cv-links a{color:#000;border-color:#000}
     }
 
@@ -962,16 +975,21 @@
         <div><h1>DANNIEL HU</h1><p class="cv-subtitle">Mechanical &amp; Biomedical Engineer — Toronto, ON</p></div>
         <div class="cv-links"><a href="https://github.com/PtolemyDL" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="http://linkedin.com/in/dannielhu" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://ptolemydl.blog" target="_blank" rel="noopener noreferrer">Blog ↗</a></div>
       </header>
-      <section class="cv-section"><h2>EXPERIENCE</h2><div class="cv-content"><h3>Mechanical Systems Engineer — Wireframe, Toronto — 2025—NOW</h3><ul><li>Mechanical design, rapid prototyping, and electromechanical integration for multidisciplinary hardware products.</li><li>Supplier outreach and technical documentation.</li><li>Microfluidics work; daily SLA and FDM 3D printing.</li></ul></div></section>
-      <section class="cv-section"><h2>PROJECTS</h2><div class="cv-projects">
-        <div class="cv-project"><strong>Handheld sEMG Device</strong><span>System Designer — 2025 — BME 550 — shipped</span></div>
+      <section class="cv-section"><h2>PROFESSIONAL SUMMARY</h2><div class="cv-content"><p class="cv-summary">Biomedical Mechanical Engineer with hands-on experience developing electromechanical medical devices from concept to commercialization. Skilled in SolidWorks, FEA, MATLAB, and ISO 13485-compliant design control. Proven ability to execute rapid design iterations, hypothesis-driven testing, and collaborative cross-functional development. Passionate about improving patient outcomes through novel, minimally invasive medical technologies.</p></div></section>
+      <section class="cv-section cv-experience-section"><h2>EXPERIENCE</h2><div class="cv-content cv-experience-list">
+        <article class="cv-experience"><h3>Mechanical System Engineer<br>Wireframe/DropLab, Toronto — July 2025 to Present</h3><ul><li>Led the mechanical structural design of Droplab's handheld diagnostic device, delivering three core subsystems: microfluidics system (piezobender valve &amp; pump), detachable 2-stage locking battery module, and ultra-thin heat pipe thermal system (20 W dissipation).</li><li>Conducted structural and thermal verification using Ansys (FEA) to validate thin-wall housings, high-RPM components, and thermal performance.</li><li>Applied DFM/DFA principles and injection molding considerations; collaborated with suppliers to achieve ±0.01 mm tolerance and ensure manufacturability.</li><li>Built and tested rapid prototypes with FDM and SLA 3D printing, accelerating design iteration and usability validation.</li><li>Designed and built in-house hardware test fixtures (pump life-cycle, valve pressure, airflow, and mechanism durability) to support design verification.</li><li>Produced well-structured technical documentation (BOMs, GD&amp;T engineering drawings, exploded views, assembly guides) aligned with Class II medical device standards and FDA/ISO 13485 workflows.</li></ul></article>
+        <article class="cv-experience"><h3>R&amp;D Engineering Intern with Dr. Jose Zariffa<br>The KITE Institute, Toronto — May 2024 to August 2024</h3><p>Developed a handheld sEMG acquisition platform integrating electronics, signal processing algorithms, and UI on an embedded touchscreen. Implemented adaptive FFT-based filtering for automated signal reliability, achieving robust EMG data at 1–2 kHz sampling rates. Validated device performance under clinical protocols and delivered system documentation for cross-functional handoff.</p></article>
+        <article class="cv-experience"><h3>Co-founder &amp; Lead Mechanical Designer<br>Elpis, Waterloo — March 2021 to April 2023</h3><p>Co-led a two-year venture to develop PHANES, an innovative, electricity-free assistive device enabling people with spinal cord injury (SCI) to independently perform sit-to-stand and elliptical movement exercises. Conducted extensive human-centred research to define post-rehabilitation mobility gaps, collaborating with SCI advocates, clinicians, KITE, and Praxis Spinal Cord Institute. Designed and built a mechanically actuated posture transformation mechanism, enhancing physical activity access for users through safe, stable, and accessible motion paths. Managed prototype fabrication, system testing, stakeholder presentations, and funding proposals, resulting in $20K in support and Top 5 finalist recognition in the Praxis SCI Ideation Challenge (2022 &amp; 2023).</p></article>
+        <article class="cv-experience"><h3>R&amp;D Development Engineering Student<br>STI Conveyor System, Barrie — January 2020 to April 2020</h3><p>Engineered a high-efficiency wheel wash mechanism for automotive conveyor systems, leveraging SolidWorks for design, which resulted in a 200% boost in cleaning efficiency and a reduction in maintenance downtime. Initiated and executed a project management system overhaul by implementing an SQL Server database, enhancing the traceability of project metrics.</p></article>
+      </div></section>
+      <section class="cv-section"><h2>RELEVANT PROJECTS</h2><div class="cv-projects">
         <div class="cv-project"><strong>PHANES</strong><span>Hardware Designer &amp; Prototyper — 2024–2025 — BME 399</span></div>
         <div class="cv-project"><strong>En-take</strong><span>Hardware &amp; System Designer — 2024 — BME 298</span></div>
         <div class="cv-project"><strong>Passive Knee ROM Device</strong><span>Mechanical Designer — 2023 — ME380</span></div>
-        <div class="cv-project"><strong>Pick-and-Place</strong><span>Mechanical Designer — 2023 — ME380</span></div>
       </div></section>
-      <section class="cv-section"><h2>EDUCATION</h2><div class="cv-content cv-education"><p><strong>MEng Biomedical Engineering</strong><br>University of Toronto</p><p><strong>BASc Mechanical Engineering</strong><br>University of Waterloo</p></div></section>
-      <section class="cv-section"><h2>TECHNICAL SKILLS</h2><div class="cv-skills">SolidWorks · MATLAB/Simulink · Python · FEA · Raspberry Pi · Arduino · GitHub · Cursor · GD&amp;T · DFM/DFA · 3D Printing</div></section>
+      <section class="cv-section"><h2>EDUCATION</h2><div class="cv-content cv-education"><p><strong>MEng Biomedical Engineering</strong><br>University of Toronto — 2023–2024</p><p><strong>BASc Mechanical Engineering</strong><br>University of Waterloo — 2018–2023</p></div></section>
+      <section class="cv-section"><h2>TECHNICAL SKILLS</h2><div class="cv-content cv-skill-list"><p><strong>CAD &amp; Simulation:</strong> SolidWorks, Fusion360, Inventor, MATLAB, FEA</p><p><strong>Programming &amp; Computation:</strong> Python, SQL, C/C++, TensorFlow, PyTorch</p><p><strong>Manufacturing &amp; Testing:</strong> Lathe, CNC, 3D printing, laser cutting, rapid prototyping</p><p><strong>Embedded Systems:</strong> ESP32, Arduino, Nextion TFT LCD, digital signal acquisition</p><p><strong>Documentation &amp; Compliance:</strong> ISO 13485, ISO 10993, DHF/DMR, Risk management</p></div></section>
+      <section class="cv-section"><h2>HONOURS AND AWARDS</h2><div class="cv-content cv-awards"><p><strong>The Best Mechanical Design Capstone Award, University of Waterloo</strong><span>2023</span></p><p><strong>Top 7 Finalist, Velocity 5K Medical Device Pitch Competition</strong><span>2023</span></p><p><strong>Praxis SCI Grant, SCI-focused Innovation Project</strong><span>2022</span></p></div></section>
     </div>
   </main>
 
